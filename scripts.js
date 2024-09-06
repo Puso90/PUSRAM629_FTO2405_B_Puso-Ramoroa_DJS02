@@ -11,21 +11,28 @@ form.addEventListener("submit", (event) => {
 
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
-
+try {
   if (dividend === '' || divider === '') {
     return result.innerText = "Division not performed. Both values are required in inputs. Try again";
   } else if (divider < 1 || dividend === 0) {
-    console.error(error.stack);
     return result.innerText = "Division not performed. Invalid number provided. Try again"
-  } else if (!Number(dividend) || !Number(divider)) {
-    console.log(new Error("Cannot divide by 0").stack)
+  } else if (isNaN(dividend) || isNaN(divider)) {
+    throw error("INVALID BUDDY! / Error notworking");
   }
+
 
   result.innerText = Math.floor(dividend / divider);
 
 
+}
 
 
+
+catch (error) {
+  document.innerHTML = "HADE BADE, WRONG STUFF!";
+
+  console.error("Error: Invalid MUST BREAK PAGE ", new Error().stack);
+}
 
 });
 
@@ -33,7 +40,7 @@ form.addEventListener("submit", (event) => {
 
 
 /*_______________________________________________________________________________________________________________
-
+COMMENTS & NOTES:
 
 //console.log(new Error("Cannot divide by 0").stack)
 
