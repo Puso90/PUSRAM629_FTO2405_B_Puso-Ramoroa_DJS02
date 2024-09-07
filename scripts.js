@@ -12,12 +12,16 @@ form.addEventListener("submit", (event) => {
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
 try {
+
+
+  
   if (dividend === '' || divider === '') {
     return result.innerText = "Division not performed. Both values are required in inputs. Try again";
-  } else if (divider < 1 || dividend === 0) {
+  } else if (divider <= 0 || dividend === 0) {
     return result.innerText = "Division not performed. Invalid number provided. Try again"
   } else if (isNaN(dividend) || isNaN(divider)) {
-    throw error("INVALID BUDDY! / Error notworking");
+    console.log("error must be showing");
+    throw new Error("INVALID Data Input! / Error notworking");
   }
 
 
@@ -27,11 +31,11 @@ try {
 }
 
 
-
+// This is not working.  I have ZERO idea why???!!!  Damn!
 catch (error) {
-  document.innerHTML = "HADE BADE, WRONG STUFF!";
+  document.innerHTML = `<h1>HADE BADE, WRONG STUFF! ${error.message}</h1>`;
 
-  console.error("Error: Invalid MUST BREAK PAGE ", new Error().stack);
+  console.error("Error: Invalid MUST BREAK PAGE ", error.stack);
 }
 
 });
