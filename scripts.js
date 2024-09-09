@@ -21,7 +21,7 @@ try {
     return result.innerText = "Division not performed. Invalid number provided. Try again"
   } else if (isNaN(dividend) || isNaN(divider)) {
     console.log("error must be showing");
-    throw new Error("INVALID Data Input! / Error notworking");
+    throw new Error("INVALID Data Input! / Error");
   }
 
 
@@ -33,7 +33,7 @@ try {
 
 // This is not working.  I have ZERO idea why???!!!  Damn!
 catch (error) {
-  document.innerHTML = `<h1>HADE BADE, WRONG STUFF! ${error.message}</h1>`;
+  document.body.innerHTML = `<h1>Something critical went wrong. Please reload the page! ${error.message}</h1>`;
 
   console.error("Error: Invalid MUST BREAK PAGE ", error.stack);
 }
